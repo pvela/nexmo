@@ -1,6 +1,7 @@
 import requestTests from './verify';
 import checkTests from './check';
 import cancelTests from './cancel';
+import nextTests from './next';
 
 export default [
   {
@@ -14,5 +15,9 @@ export default [
   {
     label: 'Cancel tests',
     tests: cancelTests,
+  },
+  {
+    label: 'Next tests',
+    tests: nextTests,
   },
 ];

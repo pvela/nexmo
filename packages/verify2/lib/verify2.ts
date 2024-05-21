@@ -66,4 +66,16 @@ export class Verify2 extends Client {
       return false;
     }
   }
+
+  /**
+   * Move the request onto the next workflow, if available.
+   *
+   * @param {string} requestId - The ID of the verification request.
+   * @return {string} The status of the verification code check.
+   */
+  public async nextWorkflow(requestId: string): Promise<void> {
+    await this.sendPostRequest<void>(
+      `${this.config.apiHost}/v2/verify/${requestId}/next_workflow`,
+    );
+  }
 }
