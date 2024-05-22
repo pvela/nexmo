@@ -17,19 +17,13 @@ jobs:
     name: Update Release
 
     steps:
-      - name: Check Token
-        if: env.GH_TOKEN == ''
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "GH_TOKEN=${GITHUB_TOKEN}" >> $GITHUB_ENV
-
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
         with:
           ref: '3.x'
           fetch-depth: 0
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN_COMMIT }}
 
       - name: Setup node
         uses: actions/setup-node@v3
