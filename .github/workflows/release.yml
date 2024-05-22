@@ -9,7 +9,7 @@ on:
       - released
 
 env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN_COMMIT }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN_COMMIT}}
 
 jobs:
