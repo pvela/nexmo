@@ -10,7 +10,6 @@ on:
 
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN_COMMIT }}
-  GITHUB_TOKEN: ${{ secrets.GH_TOKEN_COMMIT}}
 
 jobs:
   test-action:
@@ -18,12 +17,19 @@ jobs:
     name: Update Release
 
     steps:
+      - name: Check Token
+        if: env.GH_TOKEN == ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "GH_TOKEN=${GITHUB_TOKEN}" >> $GITHUB_ENV
+
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
         with:
           ref: '3.x'
-          ssh-key: ${{ secrets.GH_DEPLOY_KEY }}
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Setup node
         uses: actions/setup-node@v3
@@ -37,7 +43,6 @@ jobs:
         run: |
           git config --local user.name github-actions
           git config --local user.email github-actions@github.com
-          git remote -v
           git add RELEASES.md
           git commit -m "chore: updated release log"
           git push --force-with-lease
