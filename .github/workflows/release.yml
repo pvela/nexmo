@@ -3,9 +3,6 @@ name: Release Action
 on:
   release:
     types:
-      - published
-      - created
-      - edited
       - released
 
 # env:
