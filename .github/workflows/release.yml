@@ -30,10 +30,14 @@ jobs:
       - name: Update RELEASES.MD
         uses: vonage/generate-release-log@1.0.2
 
+      - name: DEbug
+        run: |
+          echo https://${{ secrets.GH_TOKEN_COMMIT }}@github.com/${{ github.repository }}
+
       - name: Commit release
         run: |
           git config --local user.name github-actions
           git config --local user.email github-actions@github.com
           git add RELEASES.md
           git commit -m "chore: updated release log"
-          git push --force-with-lease
+          git push --force-with-lease https://${{ secrets.GH_TOKEN_COMMIT }}@github.com/${{ github.repository }}
