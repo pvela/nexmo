@@ -8,8 +8,8 @@ on:
       - edited
       - released
 
-env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN_COMMIT }}
+# env:
+#   GH_TOKEN: ${{ secrets.GH_TOKEN_COMMIT }}
 
 jobs:
   test-action:
@@ -23,7 +23,7 @@ jobs:
         with:
           ref: '3.x'
           fetch-depth: 0
-          token: ${{ secrets.GH_TOKEN_COMMIT }}
+#          token: ${{ secrets.GH_TOKEN_COMMIT }}
 
       - name: Setup node
         uses: actions/setup-node@v3
