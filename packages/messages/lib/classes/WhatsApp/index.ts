@@ -6,4 +6,3 @@ export * from './WhatsAppSticker';
 export * from './WhatsAppTemplate';
 export * from './WhatsAppText';
 export * from './WhatsAppVideo';
-export * from './WhatsAppReaction';
